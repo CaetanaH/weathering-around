@@ -6,19 +6,19 @@ let place = document.querySelector("#weather-location");
 let precipitation = document.querySelector("#precipitation-probality");
 let temperature = document.querySelector(".weather-temp--today");
 let wind = document.querySelector("#wind-speed");
-let refreshBtn = document.querySelector("#weather-refresh");
+let updateButton = document.querySelector("#weather-current-location");
 let form = document.querySelector("#weather__form");
 let formLocation = form.querySelector("#weather__form-location");
 
 let root = "https://api.openweathermap.org";
 let apiKey = "cd0cb5334d1e8df4915375bc0f340575";
 
-function friendlyDay(dayNumber) {
+function dayOfWeek(dayNumber) {
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     return days[dayNumber];
 }
 
-function friendlyMinutes(minutesNumber) {
+function minutesConsent(minutesNumber) {
     if (minutesNumber < 10) {
         return "0" + minutesNumber;
     } else {
@@ -26,20 +26,21 @@ function friendlyMinutes(minutesNumber) {
     }
 }
 
-function friendlyDate(date) {
-    let day = friendlyDay(date.getDay());
+function updateTime(date) {
+    let day = dayOfWeek(date.getDay());
     let hours = date.getHours();
-    let minutes = friendlyMinutes(date.getMinutes());
+    if (hours < 10) hours = "0" + hours;
+    let minutes = minutesConsent(date.getMinutes());
 
     return day + " " + hours + ":" + minutes;
 }
 
-function refreshWeather(queryParams) {
+function updateWeather(queryParams) {
     let apiParams = "appid=" + apiKey + "&units=metric";
     axios
         .get(root + "/data/2.5/weather?" + apiParams + "&" + queryParams)
         .then(function (response) {
-            date.innerHTML = friendlyDate(new Date());
+            date.innerHTML = updateTime(new Date());
             place.innerHTML = response.data.name;
             description.innerHTML = response.data.weather[0].main;
             temperature.innerHTML = Math.round(response.data.main.temp);
@@ -54,16 +55,37 @@ function refreshWeather(queryParams) {
             );
         });
 }
+
+function convertCelsius() {
+    let link = document.querySelector("#celsius");
+    link.classList.add("active");
+    let fahrenheitLink = document.querySelector("#fahrenheit");
+    fahrenheitLink.classList.remove("active");
+}
+
+function convertFahrenheit() {
+    let link = document.querySelector("#fahrenheit");
+    link.classList.add("active");
+    let celsiusLink = document.querySelector("#celsius");
+    celsiusLink.classList.remove("active");
+    temperature.innerHTML = temperature * 9 / 5 + 32;
+}
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", convertCelsius);
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", convertFahrenheit);
+
 form.addEventListener("submit", function (event) {
-    refreshWeather("q=" + form.querySelector("#weather__form-location").value);
+    updateWeather("q=" + form.querySelector("#weather__form-location").value);
     event.preventDefault();
 });
 
-refreshBtn.addEventListener("click", function () {
+updateButton.addEventListener("click", function () {
     navigator.geolocation.getCurrentPosition(function (position) {
-        refreshWeather(
+        updateWeather(
             "lat=" + position.coords.latitude + "&lon=" + position.coords.longitude
         );
     });
 });
-refreshWeather("q=Lisbon");
+updateWeather("q=Lisbon");

@@ -43,7 +43,8 @@ function updateWeather(queryParams) {
             date.innerHTML = updateTime(new Date());
             place.innerHTML = response.data.name;
             description.innerHTML = response.data.weather[0].main;
-            temperature.innerHTML = Math.round(response.data.main.temp);
+            temperatureDegrees = response.data.main.temp;
+            temperature.innerHTML = Math.round(temperatureDegrees);
             wind.innerHTML = Math.round(response.data.wind.speed) + "km/h";
             precipitation.innerHTML = Math.round(response.data.main.humidity) + "%";
 
@@ -56,25 +57,48 @@ function updateWeather(queryParams) {
         });
 }
 
-function convertCelsius() {
-    let link = document.querySelector("#celsius");
-    link.classList.add("active");
-    let fahrenheitLink = document.querySelector("#fahrenheit");
-    fahrenheitLink.classList.remove("active");
+
+function getTemperature(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+
+    let apiKey = "cd0cb5334d1e8df4915375bc0f340575";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+    axios.get(`${apiUrl}&appid=${apiKey}`).then(displayTemperature);
 }
 
-function convertFahrenheit() {
-    let link = document.querySelector("#fahrenheit");
-    link.classList.add("active");
-    let celsiusLink = document.querySelector("#celsius");
+function convertFahrenheit(event) {
+    event.preventDefault();
+    let temperatureElement = document.querySelector(".weather-temp--today");
+
     celsiusLink.classList.remove("active");
-    temperature.innerHTML = temperature * 9 / 5 + 32;
+    fahrenheitLink.classList.add("active");
+
+    let temperatureFahrenheit = (temperatureDegrees * 9) / 5 + 32;
+    temperatureElement.innerHTML = Math.round(temperatureFahrenheit);
 }
+
+function convertCelsius(event) {
+    event.preventDefault();
+
+    celsiusLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+
+    let temperatureElement = document.querySelector(".weather-temp--today");
+    temperatureElement.innerHTML = Math.round(temperatureDegrees);
+
+}
+
+let temperatureDegrees = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", convertFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", convertCelsius);
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", convertFahrenheit);
+
+
 
 form.addEventListener("submit", function (event) {
     updateWeather("q=" + form.querySelector("#weather__form-location").value);

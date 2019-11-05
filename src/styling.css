@@ -1,123 +1,120 @@
 body {
-    font-family: "Roboto", sans-serif;
-    border: 1px solid #dadde1;
-    margin: 60px auto;
-    max-width: 800px;
-    padding: 15px;
-    border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid #dadde1;
+  margin: 60px auto;
+  max-width: 800px;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 h1 {
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-    line-height: 28px;
-    font-family: "Roboto",
-        sans-serif;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 28px;
+  font-family: "Roboto", sans-serif;
 }
 
 button {
-    margin-left: 5px;
-    position: relative;
-    top: 1px;
+  margin-left: 5px;
+  position: relative;
+  top: 1px;
 }
 
 input[type="text"] {
-    border-radius: 2px;
-    border: none;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-    height: 44px;
-    outline: 0;
-    padding: 10px;
-    width: 300px;
-    font-family: "Roboto",
-        sans-serif;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  height: 44px;
+  outline: 0;
+  padding: 10px;
+  width: 300px;
+  font-family: "Roboto", sans-serif;
 }
 
 .btn-light {
-    border-radius: 2px;
-    color: #212429;
-    height: 44px;
+  border-radius: 2px;
+  color: #212429;
+  height: 44px;
 }
 
 .btn-primary {
-    border-radius: 2px;
-    color: #fff;
-    height: 44px;
+  border-radius: 2px;
+  color: #fff;
+  height: 44px;
 }
 
 .weather-summary {
-    padding-bottom: 5px;
+  padding-bottom: 5px;
 }
 
 .weather-summary-header {
-    padding-bottom: 5px;
+  padding-bottom: 5px;
 }
 
 .weather-detail__text {
-    color: #fff;
-    font-size: 20px;
-    font-weight: 100;
-    line-height: 20px;
-    margin: 2px;
-    font-family: "Roboto",
-        sans-serif;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 20px;
+  margin: 2px;
+  font-family: "Roboto", sans-serif;
 }
 
 .weather-container {
-    border: 1px solid #dadde1;
-    margin: auto block;
-    max-width: 800px;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #e4e4e1;
-    background-image: radial-gradient(at top center,
-            rgba(255, 255, 255, 0.03) 0%,
-            rgba(0, 0, 0, 0.03) 100%),
-        linear-gradient(to top,
-            rgba(255, 255, 255, 0.1) 0%,
-            rgba(143, 152, 157, 0.6) 100%);
-    background-blend-mode: normal, multiply;
-    position: static;
-    font-family: "Roboto",
-        sans-serif;
+  border: 1px solid #dadde1;
+  margin: auto block;
+  max-width: 800px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #e4e4e1;
+  background-image: radial-gradient(
+      at top center,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(0, 0, 0, 0.03) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(143, 152, 157, 0.6) 100%
+    );
+  background-blend-mode: normal, multiply;
+  position: static;
+  font-family: "Roboto", sans-serif;
 }
 
 .weather__icon--today {
-    float: left;
-    height: 60px;
-    width: 60px;
+  float: left;
+  height: 60px;
+  width: 60px;
 }
 
 .weather-unit__text--today {
-    color: #fff;
-    float: left;
-    font-size: 16px;
-    line-height: 1.5;
-    font-family: "Roboto",
-        sans-serif;
+  color: #fff;
+  float: left;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "Roboto", sans-serif;
 }
 
 .weather-temp--today {
-    color: #6f9a8d;
-    float: left;
-    font-size: 52px;
-    font-weight: 400;
-    line-height: 1;
-    padding-left: 10px;
-    font-family: "Roboto",
-        sans-serif;
+  color: #6f9a8d;
+  float: left;
+  font-size: 52px;
+  font-weight: 400;
+  line-height: 1;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
 }
 
 img {
-    border-radius: 10px;
-    display: inline-block;
-    margin: auto;
+  border-radius: 10px;
+  display: inline-block;
+  margin: auto;
 }
 
 a {
-    color: #6f9a8d !important;
-    font-family: "Roboto",
-        sans-serif;
+  color: #6f9a8d !important;
+  font-family: "Roboto", sans-serif;
 }

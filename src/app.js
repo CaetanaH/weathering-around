@@ -98,7 +98,18 @@ fahrenheitLink.addEventListener("click", convertFahrenheit);
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", convertCelsius);
 
-
+/*
+let image = document.getElementById("#giphyWeather").src;
+if (temperatureDegrees > 21) {
+    return https: //media.giphy.com/media/26BREnyYXsPOxlUKk/giphy.gif;
+} else if (temperatureDegrees <15) {
+    return https: //media.giphy.com/media/yClPFga7UELL2/giphy.gif;
+} else if (temperatureDegrees < 20 && temperatureDegrees > 16) {
+return https: //tenor.com/YkSq.gif;
+} else {
+    return https: //tenor.com/IKIn.gif;
+}
+*/
 
 form.addEventListener("submit", function (event) {
     updateWeather("q=" + form.querySelector("#weather__form-location").value);

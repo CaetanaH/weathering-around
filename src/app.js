@@ -54,7 +54,6 @@ function refreshWeather(queryParams) {
             );
         });
 }
-
 form.addEventListener("submit", function (event) {
     refreshWeather("q=" + form.querySelector("#weather__form-location").value);
     event.preventDefault();
@@ -67,5 +66,4 @@ refreshBtn.addEventListener("click", function () {
         );
     });
 });
-
 refreshWeather("q=Lisbon");
